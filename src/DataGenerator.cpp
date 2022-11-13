@@ -85,17 +85,5 @@ int dataSize[6] = {10000,30000,50000,100000,300000,500000};
 string algorithmsSort[11] = {"selection-sort", "insertion-sort", "bubble-sort", "shaker-sort", "shell-sort", "heap-sort", "merge-sort", "quick-sort", "counting-sort", "radix-sort", "flash-sort"};
 
 bool checkGivenInput(string s){
-	if(s.find(".txt") >=0 ) return true;
-	return false;
+	return s.find(".txt") >=0;
 }
-
-
-struct inforOfData{
-    string dataOrderType;
-    int dataSizeType;
-    string algorithmSort;
-    double timeRunning;
-    long long numOfCompare;
-};
-
-inforOfData* arrayOfData = new inforOfData[300];
