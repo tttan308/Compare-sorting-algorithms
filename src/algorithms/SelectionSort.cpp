@@ -22,4 +22,3 @@ void selectionSort(int *a, int n, double& time_use, long long& compare){
     endTime = clock();
     time_use = (double)(endTime - startTime) / CLOCKS_PER_SEC;
 }
-  
