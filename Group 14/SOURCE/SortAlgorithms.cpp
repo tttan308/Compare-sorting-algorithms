@@ -88,7 +88,39 @@ void QuickSort(int a[], int l, int r, double& time_use, long long& compare){
 
 //====== COUNTING SORT ======//
 
-void CountingSort();
+void CountingSort(int a[], int n, double& time_use, long long& compare){
+    clock_t startTime, endTime;
+    startTime = clock();
+
+    int max = a[0];
+    for(int i = 1; i < n; i++){
+        compare++;
+        if(a[i] > max){
+            max = a[i];
+        }
+        compare++;
+    }
+    int count[max + 1];
+    for(int i = 0; i <= max; i++){
+        compare++;
+        count[i] = 0;
+    }
+    for(int i = 0; i < n; i++){
+        compare++;
+        count[a[i]]++;
+    }
+    int index = 0;
+    for(int i = 0; i <= max; i++){
+        compare++;
+        for(int j = 0; j < count[i]; j++){
+            compare++;
+            a[index] = i;
+            index++;
+        }
+    }
+    endTime = clock();
+    time_use = (double)(endTime - startTime) / CLOCKS_PER_SEC;
+}
 
 
 //====== RADIX SORT ======//
