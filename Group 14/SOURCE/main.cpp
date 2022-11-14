@@ -1,6 +1,8 @@
-#include<iostream>
-#include<algorithm>
-#include<fstream>
+#include <iostream>
+#include <algorithm>
+#include <fstream>
+#include "DataGenerator.cpp"
+
 using namespace std;
 
 int main() {
