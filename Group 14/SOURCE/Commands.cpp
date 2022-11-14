@@ -1,4 +1,5 @@
-#include "./DataGenerator.cpp"
+#include <fstream>
+#include "SortAlgorithms.cpp"
 
 void generateAlgorithms(int a[], int n, double& time_use, long long& compare, string algorithm){
 	if(algorithm == "bubble-sort"){
