@@ -43,7 +43,7 @@ void generateAlgorithms(int a[], int n, double& time_use, long long& compare, st
 
 void cmd1(string algorithmName, string fileName, string outputPara){
     //Read file
-    ifstream readFile("./files/"+fileName);
+    ifstream readFile("./Files/"+fileName);
     int n;
     readFile >> n;
     int a[n];
@@ -77,7 +77,7 @@ void cmd2(string algorithmName, string inputSize, string inputOrder, string outp
     long long compare = 0;
     //Sort
     generateAlgorithms(a, n, time, compare, algorithmName);
-    // quickSort(a, 0, n-1, time, compare);
+
     if(outputPara == "-time"){
         //Output runtime
         cout << "Runtime: " << time << "s" << endl;
@@ -93,7 +93,3 @@ void cmd2(string algorithmName, string inputSize, string inputOrder, string outp
     }
 }
 
-int main(){
-    cmd2("quick-sort", "200", "-rand", "-both");
-    return 0;
-}
