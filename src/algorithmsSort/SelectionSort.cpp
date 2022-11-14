@@ -1,5 +1,4 @@
-#include "header.h"
-
+#include "../DataGenerator.cpp"
 
 void selectionSort(int a[], int n, double& time_use, long long& compare){
     compare = 0;

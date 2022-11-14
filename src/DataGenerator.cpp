@@ -1,4 +1,6 @@
-#include "header.h"
+#include"./algorithmsSort/QuickSort.cpp"
+#include "./algorithmsSort/SelectionSort.cpp"
+using namespace std;
 
 template <class T>
 void HoanVi(T &a, T &b)
@@ -101,7 +103,7 @@ void generateDataWithInputOrder(int a[], int n, string nameData){
 	}
 }
 
-void generateAlgorithms(int a[], int n, string algorithm){
+void generateAlgorithms(int a[], int n, double& time_use, long long& compare, string algorithm){
 	if(algorithm == "bubble-sort"){
 
 	}
@@ -118,21 +120,24 @@ void generateAlgorithms(int a[], int n, string algorithm){
 
 	}
 	else if(algorithm == "merge-sort"){
-
+		cout << "merge-sort" << endl;
 	}
 	else if(algorithm == "quick-sort"){
-
+		quickSort(a, 0, n-1, time_use, compare);
 	}
 	else if(algorithm == "radix-sort"){
-
+		cout << "radix-sort" << endl;
 	}
 	else if(algorithm == "selection-sort"){
-
+		selectionSort(a, n, time_use, compare);
 	}
 	else if(algorithm == "shaker-sort"){
-
+		cout << "shaker-sort" << endl;
 	}
 	else if(algorithm == "shell-sort"){
-
+		cout << "shell-sort" << endl;
+	}
+	else{
+		cout << "Error: unknown algorithm!\n" << endl;
 	}
 }

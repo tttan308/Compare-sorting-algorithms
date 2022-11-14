@@ -1,4 +1,4 @@
-#include"header.h"
+#include"./DataGenerator.cpp"
 
 void cmd1(string algorithmName, string fileName, string outputPara){
     //Read file
@@ -12,7 +12,7 @@ void cmd1(string algorithmName, string fileName, string outputPara){
     double time = 0;
     long long compare = 0;
     //Sort
-    quicksort(a, 0, n-1, time, compare);
+    generateAlgorithms(a, n, time, compare, algorithmName);
     if(outputPara == "-time"){
         //Output runtime
         cout << "Runtime: " << time << "s" << endl;
@@ -28,14 +28,15 @@ void cmd1(string algorithmName, string fileName, string outputPara){
     }
 }
 
-void cmd2(string algorithm, string inputSize, string inputOrder, string outputPara){
+void cmd2(string algorithmName, string inputSize, string inputOrder, string outputPara){
     int n = stoi(inputSize);
     int a[n];
     generateDataWithInputOrder(a, n, inputOrder);
     double time = 0;
     long long compare = 0;
     //Sort
-    quicksort(a, 0, n-1, time, compare);
+    generateAlgorithms(a, n, time, compare, algorithmName);
+    // quickSort(a, 0, n-1, time, compare);
     if(outputPara == "-time"){
         //Output runtime
         cout << "Runtime: " << time << "s" << endl;

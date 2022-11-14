@@ -1,8 +1,5 @@
 #include<iostream>
 #include<algorithm>
-#include "DataGenerator.cpp"
-#include "./algorithms/SelectionSort.cpp"
-#include "cmd.cpp"
 #include<fstream>
 using namespace std;
 
