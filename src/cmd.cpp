@@ -1,11 +1,8 @@
-#include<iostream>
-#include <fstream>
-#include "./algorithms/SelectionSort.cpp"
-using namespace std;
+#include"header.h"
 
 void cmd1(string algorithmName, string fileName, string outputPara){
     //Read file
-    ifstream readFile("./files/input.txt");
+    ifstream readFile("./files/"+fileName);
     int n;
     readFile >> n;
     int a[n];
@@ -15,7 +12,7 @@ void cmd1(string algorithmName, string fileName, string outputPara){
     double time = 0;
     long long compare = 0;
     //Sort
-    selectionSort(a, n, time, compare);
+    quicksort(a, 0, n-1, time, compare);
     if(outputPara == "-time"){
         //Output runtime
         cout << "Runtime: " << time << "s" << endl;
@@ -31,7 +28,29 @@ void cmd1(string algorithmName, string fileName, string outputPara){
     }
 }
 
+void cmd2(string algorithm, string inputSize, string inputOrder, string outputPara){
+    int n = stoi(inputSize);
+    int a[n];
+    generateDataWithInputOrder(a, n, inputOrder);
+    double time = 0;
+    long long compare = 0;
+    //Sort
+    quicksort(a, 0, n-1, time, compare);
+    if(outputPara == "-time"){
+        //Output runtime
+        cout << "Runtime: " << time << "s" << endl;
+    }
+    else if(outputPara == "-comp"){
+        //Output comparisons
+        cout << "Comparisons: " << compare << endl;
+    }
+    else if(outputPara == "-both"){
+        //Output runtime and comparisons
+        cout << "Runtime: " << time << "s" << endl;
+        cout << "Comparisons: " << compare << endl;
+    }
+}
 int main(){
-    cmd1("selection", "input.txt", "-both");
+    cmd2("quick-sort", "200", "-rand", "-both");
     return 0;
 }

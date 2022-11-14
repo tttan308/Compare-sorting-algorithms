@@ -1,10 +1,8 @@
-#include<iostream>
-#include<time.h>
-#include"../DataGenerator.cpp"
-using namespace std;
+#include "header.h"
 
 
-void selectionSort(int *a, int n, double& time_use, long long& compare){
+void selectionSort(int a[], int n, double& time_use, long long& compare){
+    compare = 0;
     clock_t startTime, endTime; 
     startTime = clock();
     for(int i = 0; i < n - 1; i++){
@@ -14,8 +12,8 @@ void selectionSort(int *a, int n, double& time_use, long long& compare){
             compare++;
             if (a[j] < a[min_pos]){
                 min_pos = j;
-                compare++;
             }
+            compare++;
         }
         HoanVi(a[min_pos], a[i]);
     }

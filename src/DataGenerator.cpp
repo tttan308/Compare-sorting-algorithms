@@ -1,8 +1,4 @@
-#include <iostream>
-#include <fstream>
-#include <cmath>
-#include <time.h>
-using namespace std;
+#include "header.h"
 
 template <class T>
 void HoanVi(T &a, T &b)
@@ -82,8 +78,61 @@ void GenerateData(int a[], int n, int dataType)
 
 int dataSize[6] = {10000,30000,50000,100000,300000,500000};
 
-string algorithmsSort[11] = {"selection-sort", "insertion-sort", "bubble-sort", "shaker-sort", "shell-sort", "heap-sort", "merge-sort", "quick-sort", "counting-sort", "radix-sort", "flash-sort"};
-
+	
 bool checkGivenInput(string s){
 	return s.find(".txt") >=0;
+}
+
+void generateDataWithInputOrder(int a[], int n, string nameData){
+	if(nameData == "-rand"){
+		GenerateRandomData(a, n);
+	}
+	else if(nameData == "-nsorted"){
+		GenerateNearlySortedData(a, n);
+	}
+	else if(nameData == "-sorted"){
+		GenerateSortedData(a, n);
+	}
+	else if(nameData == "-rev"){
+		GenerateReverseData(a, n);
+	}
+	else {
+		cout << "Error: unknown data type!\n" << endl;
+	}
+}
+
+void generateAlgorithms(int a[], int n, string algorithm){
+	if(algorithm == "bubble-sort"){
+
+	}
+	else if(algorithm == "counting-sort"){
+
+	}
+	else if(algorithm == "flash-sort"){
+
+	}
+	else if(algorithm == "heap-sort"){
+
+	}
+	else if(algorithm == "insertion-sort"){
+
+	}
+	else if(algorithm == "merge-sort"){
+
+	}
+	else if(algorithm == "quick-sort"){
+
+	}
+	else if(algorithm == "radix-sort"){
+
+	}
+	else if(algorithm == "selection-sort"){
+
+	}
+	else if(algorithm == "shaker-sort"){
+
+	}
+	else if(algorithm == "shell-sort"){
+
+	}
 }
