@@ -34,6 +34,16 @@ void InsertionSort();
 void BubbleSort();
 
 
+//====== SHAKER SORT ======//
+
+void ShakerSort();
+
+
+//====== SHELL SORT ======//
+
+void ShellSort();
+
+
 //====== HEAP SORT ======//
 
 void HeapSort();
@@ -76,27 +86,17 @@ void QuickSort(int a[], int l, int r, double& time_use, long long& compare){
 }
 
 
-//====== RADIX SORT ======//
-
-void RadixSort();
-
-
-//====== SHAKER SORT ======//
-
-void ShakerSort();
-
-
-//====== SHELL SORT ======//
-
-void ShellSort();
-
-
 //====== COUNTING SORT ======//
 
 void CountingSort();
 
 
-//====== FLASHSORT SORT ======//
+//====== RADIX SORT ======//
+
+void RadixSort();
+
+
+//====== FLASH SORT ======//
 
 void FlashSort();
 
