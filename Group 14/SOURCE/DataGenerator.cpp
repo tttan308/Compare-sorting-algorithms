@@ -1,5 +1,5 @@
-#include"./algorithmsSort/QuickSort.cpp"
-#include "./algorithmsSort/SelectionSort.cpp"
+#include"./SortAlgorithms/QuickSort.cpp"
+#include "./SortAlgorithms/SelectionSort.cpp"
 
 using namespace std;
 
