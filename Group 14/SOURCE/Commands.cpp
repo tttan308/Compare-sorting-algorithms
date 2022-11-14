@@ -1,4 +1,44 @@
-#include"./DataGenerator.cpp"
+#include "./DataGenerator.cpp"
+
+void generateAlgorithms(int a[], int n, double& time_use, long long& compare, string algorithm){
+	if(algorithm == "bubble-sort"){
+
+	}
+	else if(algorithm == "counting-sort"){
+
+	}
+	else if(algorithm == "flash-sort"){
+
+	}
+	else if(algorithm == "heap-sort"){
+
+	}
+	else if(algorithm == "insertion-sort"){
+
+	}
+	else if(algorithm == "merge-sort"){
+		cout << "merge-sort" << endl;
+	}
+	else if(algorithm == "quick-sort"){
+		QuickSort(a, 0, n-1, time_use, compare);
+	}
+	else if(algorithm == "radix-sort"){
+		cout << "radix-sort" << endl;
+	}
+	else if(algorithm == "selection-sort"){
+		SelectionSort(a, n, time_use, compare);
+	}
+	else if(algorithm == "shaker-sort"){
+		cout << "shaker-sort" << endl;
+	}
+	else if(algorithm == "shell-sort"){
+		cout << "shell-sort" << endl;
+	}
+	else{
+		cout << "Error: unknown algorithm!\n" << endl;
+	}
+}
+
 
 void cmd1(string algorithmName, string fileName, string outputPara){
     //Read file
@@ -51,6 +91,7 @@ void cmd2(string algorithmName, string inputSize, string inputOrder, string outp
         cout << "Comparisons: " << compare << endl;
     }
 }
+
 int main(){
     cmd2("quick-sort", "200", "-rand", "-both");
     return 0;

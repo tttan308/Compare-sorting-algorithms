@@ -1,5 +1,5 @@
-#include"./SortAlgorithms/QuickSort.cpp"
-#include "./SortAlgorithms/SelectionSort.cpp"
+#include <iostream>
+#include <ctime>
 
 using namespace std;
 
@@ -92,41 +92,3 @@ void generateDataWithInputOrder(int a[], int n, string nameData){
 	}
 }
 
-void generateAlgorithms(int a[], int n, double& time_use, long long& compare, string algorithm){
-	if(algorithm == "bubble-sort"){
-
-	}
-	else if(algorithm == "counting-sort"){
-
-	}
-	else if(algorithm == "flash-sort"){
-
-	}
-	else if(algorithm == "heap-sort"){
-
-	}
-	else if(algorithm == "insertion-sort"){
-
-	}
-	else if(algorithm == "merge-sort"){
-		cout << "merge-sort" << endl;
-	}
-	else if(algorithm == "quick-sort"){
-		quickSort(a, 0, n-1, time_use, compare);
-	}
-	else if(algorithm == "radix-sort"){
-		cout << "radix-sort" << endl;
-	}
-	else if(algorithm == "selection-sort"){
-		selectionSort(a, n, time_use, compare);
-	}
-	else if(algorithm == "shaker-sort"){
-		cout << "shaker-sort" << endl;
-	}
-	else if(algorithm == "shell-sort"){
-		cout << "shell-sort" << endl;
-	}
-	else{
-		cout << "Error: unknown algorithm!\n" << endl;
-	}
-}
