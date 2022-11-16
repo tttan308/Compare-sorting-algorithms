@@ -8,7 +8,8 @@ void generateAlgorithms(int a[], int n, double& time_use, long long& compare, st
 
 	}
 	else if(algorithm == "counting-sort"){
-
+        cout << "counting-sort";
+        CountingSort(a, n, time_use, compare);
 	}
 	else if(algorithm == "flash-sort"){
 
