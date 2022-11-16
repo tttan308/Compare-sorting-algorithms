@@ -1,7 +1,9 @@
 #include <fstream>
+#include<cstring>
 #include "SortAlgorithms.cpp"
 
 void generateAlgorithms(int a[], int n, double& time_use, long long& compare, string algorithm){
+    clock_t startTime, endTime; 
 	if(algorithm == "bubble-sort"){
 
 	}
@@ -21,19 +23,25 @@ void generateAlgorithms(int a[], int n, double& time_use, long long& compare, st
 		cout << "merge-sort" << endl;
 	}
 	else if(algorithm == "quick-sort"){
-		QuickSort(a, 0, n-1, time_use, compare);
+        startTime = clock();
+		QuickSort(a, 0, n-1, compare);
+        endTime = clock();
+        time_use = (double)(endTime - startTime) / CLOCKS_PER_SEC;
 	}
 	else if(algorithm == "radix-sort"){
-		cout << "radix-sort" << endl;
+		
 	}
 	else if(algorithm == "selection-sort"){
-		SelectionSort(a, n, time_use, compare);
+        startTime = clock();
+		SelectionSort(a, n, compare);
+        endTime = clock();
+        time_use = (double)(endTime - startTime) / CLOCKS_PER_SEC;
 	}
 	else if(algorithm == "shaker-sort"){
-		cout << "shaker-sort" << endl;
+		
 	}
 	else if(algorithm == "shell-sort"){
-		cout << "shell-sort" << endl;
+		
 	}
 	else{
 		cout << "Error: unknown algorithm!\n" << endl;
@@ -77,7 +85,6 @@ void cmd2(string algorithmName, string inputSize, string inputOrder, string outp
     long long compare = 0;
     //Sort
     generateAlgorithms(a, n, time, compare, algorithmName);
-
     if(outputPara == "-time"){
         //Output runtime
         cout << "Runtime: " << time << "s" << endl;
@@ -93,3 +100,6 @@ void cmd2(string algorithmName, string inputSize, string inputOrder, string outp
     }
 }
 
+int main(){
+    cmd2("selection-sort", "500000", "-rand", "-both");
+}

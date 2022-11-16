@@ -3,10 +3,7 @@
 
 //====== SELECTION SORT ======//
 
-void SelectionSort(int a[], int n, double& time_use, long long& compare ){
-    compare = 0;
-    clock_t startTime, endTime; 
-    startTime = clock();
+void SelectionSort(int a[], int n, long long& compare ){
     for(int i = 0; i < n - 1; i++){
         compare++;
         int min_pos = i;
@@ -17,16 +14,18 @@ void SelectionSort(int a[], int n, double& time_use, long long& compare ){
             }
             compare++;
         }
+        compare++;
         HoanVi(a[min_pos], a[i]);
     }
-    endTime = clock();
-    time_use = (double)(endTime - startTime) / CLOCKS_PER_SEC;
+    compare++;
 }
 
 
 //====== INSERTION SORT ======//
 
-void InsertionSort();
+void InsertionSort(int a[], int n, double& time_use, long long& compare){
+
+}
 
 
 //====== BUBBLE SORT ======//
@@ -46,33 +45,43 @@ void MergeSort();
 
 //====== QUICK SORT ======//
 
-int partition(int a[], int l, int r, double& time_use, long long& compare){
-    int pivot = a[r];
-    int i = l - 1;
-    for(int j = l; j < r; j++){
+int partition(int a[], int l, int r, long long& compare){
+    int pivot = a[(l+r)/2];
+    int i = l;
+    int j = r;
+    while(i <= j){
         compare++;
-        if(a[j] <= pivot){
-            ++i;
+        while(a[i] < pivot){
+            compare++;
+            i++;
+        }
+        compare++;
+        while(a[j] > pivot){
+            compare++;
+            j--;
+        }
+        compare++;
+        if(i <= j){
             HoanVi(a[i], a[j]);
+            i++;
+            j--;
         }
         compare++;
     }
-    ++i;
-    HoanVi(a[i], a[r]);
+    compare++;
     return i;
 }
 
-void QuickSort(int a[], int l, int r, double& time_use, long long& compare){
-    clock_t startTime, endTime; 
-    startTime = clock();
-    if(l < r){
-        int m = (l + r) / 2;
-        int p = partition(a, l, r, time_use, compare);
-        QuickSort(a, l, p - 1, time_use, compare);
-        QuickSort(a, p + 1, r, time_use, compare);
+void QuickSort(int a[], int l, int r, long long& compare){
+    int part = partition(a, l, r, compare);
+    if(l < part - 1){
+        QuickSort(a, l, part - 1, compare);
     }
-    endTime = clock();
-    time_use = (double)(endTime - startTime) / CLOCKS_PER_SEC;
+    compare++;
+    if(part < r){
+        QuickSort(a, part, r, compare);
+    }
+    compare++;
 }
 
 
