@@ -146,20 +146,21 @@ void RadixSort(int a[], int n, long long& compare){
     }
     int exp = 1;
     while(max / exp > 0){
-        exp*= 10;
-        vector<int> bucket[10];
+        vector<int> buckets[10];
         for(int i = 0; i < n; i++){
             compare++;
-            bucket[(a[i] / exp) % 10].push_back(a[i]);
+            buckets[(a[i] / exp) % 10].push_back(a[i]);
         }
         int index = 0;
         for(int i = 0; i < 10; i++){
             compare++;
-            for(int j = 0; j < bucket[i].size(); j++){
+            for(int j = 0; j < buckets[i].size(); j++){
                 compare++;
-                a[index++] = bucket[i][j];
+                a[index] = buckets[i][j];
+                index++;
             }
         }
+        exp*= 10;
     }
 }
 
