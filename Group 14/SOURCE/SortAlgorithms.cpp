@@ -1,4 +1,5 @@
 #include <ctime>
+#include <vector>
 #include "DataGenerator.cpp"
 
 //====== SELECTION SORT ======//
@@ -134,10 +135,37 @@ void CountingSort(int a[], int n, double& time_use, long long& compare){
 
 //====== RADIX SORT ======//
 
-void RadixSort();
+void RadixSort(int a[], int n, long long& compare){
+    int max = a[0];
+    for(int i = 1; i < n; i++){
+        compare++;
+        if(a[i] > max){
+            max = a[i];
+        }
+        compare++;
+    }
+    int exp = 1;
+    while(max / exp > 0){
+        exp*= 10;
+        vector<int> bucket[10];
+        for(int i = 0; i < n; i++){
+            compare++;
+            bucket[(a[i] / exp) % 10].push_back(a[i]);
+        }
+        int index = 0;
+        for(int i = 0; i < 10; i++){
+            compare++;
+            for(int j = 0; j < bucket[i].size(); j++){
+                compare++;
+                a[index++] = bucket[i][j];
+            }
+        }
+    }
+}
 
 
 //====== FLASH SORT ======//
 
-void FlashSort();
+void FlashSort(int a[], int n, long long& compare){
+}
 

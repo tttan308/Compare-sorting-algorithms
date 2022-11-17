@@ -1,30 +1,31 @@
-#include <iostream>
-#include <algorithm>
-#include <fstream>
-// #include "Commands.cpp"
+#include <cstring>
+#include "Commands.cpp"
 
-using namespace std;
-
-int main(int argc, char* argv[]) {
+int main(int argc, char** argv) {
     if(argc == 5){
-        if(argv[1] == "-a"){
-            if(checkGivenInput(argv[4])){
+        if(strcmp(argv[1], "-a") == 0){
+            if(!checkGivenInput(argv[3])){
+                cout << "cmd1" << endl;
                 cmd1(argv[2], argv[3], argv[4]);
             }
-            else if(!checkGivenInput(argv[4])) {
-                //Cmd 3
+            else if(checkGivenInput(argv[3])) {
+                cout << "cmd3" << endl;
+                cmd3(argv[2], argv[3], argv[4]);
             }
         }
-        else if(argv[1] == "-c") {
-            //Cmd 4
+        else if(strcmp(argv[1], "-c") == 0) {
+            cout << "cmd4" << endl;
+            cmd4(argv[2], argv[3], argv[4]);
         }
     }
     else if(argc == 6){
-        if(argv[1] == "-a") {
+        if(strcmp(argv[1], "-a") == 0) {
+            cout << "cmd2" << endl;
             cmd2(argv[2], argv[3], argv[4], argv[5]);
         }
-        else if(argv[1] == "-c") {
-            //Cmd 5
+        else if(strcmp(argv[1], "-c") == 0){
+            cout << "cmd5" << endl;
+            cmd5(argv[2], argv[3], argv[4], argv[5]);
         }
     }
     else{

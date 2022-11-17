@@ -92,3 +92,34 @@ void generateDataWithInputOrder(int a[], int n, string nameData){
 	}
 }
 
+void generateDataWithAll(int a[], int n, int i){
+	if(i==0){
+		cout << "Input order: Randomize" << endl;
+		GenerateRandomData(a, n);
+	}
+	else if(i==1){
+		cout << "Input order: Nearly Sorted " << endl;
+		GenerateNearlySortedData(a, n);
+	}
+	else if(i==2){
+		cout << "Input order: Sorted" << endl;
+		GenerateSortedData(a, n);
+	}
+	else if(i==3){
+		cout << "Input order: Reverse" << endl;
+		GenerateReverseData(a, n);
+	}
+
+	//Write Input
+    ofstream writeInput("./Files/input_"+to_string(i+1)+".txt");
+    if(!writeInput.is_open()){
+        cout << "Error: filae not found!\n" << endl;
+        return;
+    }
+    writeInput << n << endl;
+    for(int i = 0; i < n; i++){
+        writeInput << a[i] << " ";
+    }
+    writeInput.close();
+}
+
