@@ -1,5 +1,6 @@
 #include <iostream>
 #include <ctime>
+#include <fstream>
 
 using namespace std;
 
@@ -69,7 +70,7 @@ void GenerateData(int a[], int n, int dataType) {
 
 	
 bool checkGivenInput(string s){
-	return s.find(".txt") >=0;
+	return s.find(".txt") > 0;
 }
 
 void generateDataWithInputOrder(int a[], int n, string nameData){
@@ -109,15 +110,15 @@ void generateDataWithAll(int a[], int n, int i){
 	}
 
 	//Write Input
-    ofstream writeInput("./Files/input_"+to_string(i+1)+".txt");
-    if(!writeInput.is_open()){
-        cout << "Error: filae not found!\n" << endl;
+    ofstream writeData("./Files/input_"+to_string(i+1)+".txt");
+    if(!writeData.is_open()){
+        cout << "Error: fila not found!\n" << endl;
         return;
     }
-    writeInput << n << endl;
+    writeData << n << endl;
     for(int i = 0; i < n; i++){
-        writeInput << a[i] << " ";
+        writeData << a[i] << " ";
     }
-    writeInput.close();
+    writeData.close();
 }
 

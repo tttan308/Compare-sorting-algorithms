@@ -2,53 +2,282 @@
 #include <string>
 #include "SortAlgorithms.cpp"
 
-void generateAlgorithms(int a[], int n, double& time_use, long long& compare, string algorithm){
+void generateAlgorithms(int a[], int n, int& time_use, long long& compare, string algorithmName, string outputPara){
     clock_t startTime, endTime; 
-	if(algorithm == "bubble-sort"){
-
+	if(algorithmName == "bubble-sort"){
+        if(outputPara == "-time"){
+            startTime = clock();
+            BubbleSort(a, n);
+            endTime = clock();
+            time_use = (double)(endTime - startTime)/CLOCKS_PER_SEC*1000;
+            cout << "Runtime: " << time_use << "ms" << endl;
+        }
+        else if(outputPara == "-compare"){
+            BubbleSort(a, n, compare);
+            cout << "Compare: " << compare << endl;
+        }
+        else if(outputPara == "-both"){
+            int* b = new int[n];
+            copy(a, a+n, b);
+            startTime = clock();
+            BubbleSort(a, n);
+            endTime = clock();
+            time_use = (double)(endTime - startTime)/CLOCKS_PER_SEC*1000;
+            BubbleSort(b, n, compare);
+            delete[] b;
+            cout << "Runtime: " << time_use << "ms" << endl;
+            cout << "Compare: " << compare << endl;
+        }
 	}
-	else if(algorithm == "counting-sort"){
-        cout << "counting-sort";
-        CountingSort(a, n, time_use, compare);
+	else if(algorithmName == "counting-sort"){
+        if(outputPara == "-time"){
+            startTime = clock();
+            CountingSort(a, n);
+            endTime = clock();
+            time_use = (double)(endTime - startTime)/CLOCKS_PER_SEC*1000;
+            cout << "Runtime: " << time_use << "ms" << endl;
+        }
+        else if(outputPara == "-comp"){
+            CountingSort(a, n, compare);
+            cout << "Compare: " << compare << endl;
+        }
+        else if(outputPara == "-both"){
+            int* b = new int[n];
+            copy(a, a+n, b);
+            startTime = clock();
+            CountingSort(a, n);
+            endTime = clock();
+            time_use = (double)(endTime - startTime)/CLOCKS_PER_SEC*1000;
+            CountingSort(b, n, compare);
+            delete[] b;
+            cout << "Runtime: " << time_use << "ms" << endl;
+            cout << "Compare: " << compare << endl;
+        }
 	}
-	else if(algorithm == "flash-sort"){
-
+	else if(algorithmName == "flash-sort"){
+        if(outputPara == "-time"){
+            startTime = clock();
+            FlashSort(a, n);
+            endTime = clock();
+            time_use = (double)(endTime - startTime)/CLOCKS_PER_SEC*1000;
+            cout << "Runtime: " << time_use << "ms" << endl;
+        }
+        else if(outputPara == "-comp"){
+            FlashSort(a, n, compare);
+            cout << "Compare: " << compare << endl;
+        }
+        else if(outputPara == "-both"){
+            int* b = new int[n];
+            copy(a, a+n, b);
+            startTime = clock();
+            FlashSort(a, n);
+            endTime = clock();
+            time_use = (double)(double)(endTime - startTime)/CLOCKS_PER_SEC*1000;
+            FlashSort(b, n, compare);
+            delete[] b;
+            cout << "Runtime: " << time_use << "ms" << endl;
+            cout << "Compare: " << compare << endl;
+        }
 	}
-	else if(algorithm == "heap-sort"){
-
+	else if(algorithmName == "heap-sort"){
+        if(outputPara == "-time"){
+            startTime = clock();
+            HeapSort(a, n);
+            endTime = clock();
+            time_use = (double)(endTime - startTime)/CLOCKS_PER_SEC*1000;
+            cout << "Runtime: " << time_use << "ms" << endl;
+        }
+        else if(outputPara == "-comp"){
+            HeapSort(a, n, compare);
+            cout << "Compare: " << compare << endl;
+        }
+        else if(outputPara == "-both"){
+            int* b = new int[n];
+            copy(a, a+n, b);
+            startTime = clock();
+            HeapSort(a, n);
+            endTime = clock();
+            time_use = (double)(endTime - startTime)/CLOCKS_PER_SEC*1000;
+            HeapSort(b, n, compare);
+            delete[] b;
+            cout << "Runtime: " << time_use << "ms" << endl;
+            cout << "Compare: " << compare << endl;
+        }
 	}
-	else if(algorithm == "insertion-sort"){
-
+	else if(algorithmName == "insertion-sort"){
+        if(outputPara == "-time"){
+            startTime = clock();
+            InsertionSort(a, n);
+            endTime = clock();
+            time_use = (double)(endTime - startTime)/CLOCKS_PER_SEC*1000;
+            cout << "Runtime: " << time_use << "ms" << endl;
+        }
+        else if(outputPara == "-comp"){
+            InsertionSort(a, n, compare);
+            cout << "Compare: " << compare << endl;
+        }
+        else if(outputPara == "-both"){
+            int* b = new int[n];
+            copy(a, a+n, b);
+            startTime = clock();
+            InsertionSort(a, n);
+            endTime = clock();
+            time_use = (double)(endTime - startTime)/CLOCKS_PER_SEC*1000;
+            InsertionSort(b, n, compare);
+            delete[] b;
+            cout << "Runtime: " << time_use << "ms" << endl;
+            cout << "Compare: " << compare << endl;
+        }
 	}
-	else if(algorithm == "merge-sort"){
-		cout << "merge-sort" << endl;
+	else if(algorithmName == "merge-sort"){
+		if(outputPara == "-time"){
+            startTime = clock();
+            MergeSort(a,0, n - 1);
+            endTime = clock();
+            time_use = (double)(endTime - startTime)/CLOCKS_PER_SEC*1000;
+            cout << "Runtime: " << time_use << "ms" << endl;
+        }
+        else if(outputPara == "-comp"){
+            MergeSort(a, 0, n-1, compare);
+            cout << "Compare: " << compare << endl;
+        }
+        else if(outputPara == "-both"){
+            int* b = new int[n];
+            copy(a, a+n, b);
+            startTime = clock();
+            MergeSort(a, 0, n - 1);
+            endTime = clock();
+            time_use = (double)(endTime - startTime)/CLOCKS_PER_SEC*1000;
+            MergeSort(a, 0, n-1, compare);
+            delete[] b;
+            cout << "Runtime: " << time_use << "ms" << endl;
+            cout << "Compare: " << compare << endl;
+        }
 	}
-	else if(algorithm == "quick-sort"){
-		QuickSort(a, 0, n-1, compare);
-        startTime = clock();
-        QuickSort(a, 0, n-1);
-        endTime = clock();
-        time_use = (double)(endTime - startTime);
+	else if(algorithmName == "quick-sort"){
+		if(outputPara == "-time"){
+            startTime = clock();
+            QuickSort(a, 0, n - 1);
+            endTime = clock();
+            time_use = (double)(endTime - startTime)/CLOCKS_PER_SEC*1000;
+            cout << "Runtime: " << time_use << "ms" << endl;
+        }
+        else if(outputPara == "-comp"){
+            QuickSort(a, 0, n-1, compare);
+            cout << "Compare: " << compare << endl;
+        }
+        else if(outputPara == "-both"){
+            int* b = new int[n];
+            copy(a, a+n, b);
+            startTime = clock();
+            QuickSort(a, 0, n - 1);
+            endTime = clock();
+            time_use = (double)(endTime - startTime)/CLOCKS_PER_SEC*1000;
+            QuickSort(a, 0, n-1, compare);
+            delete[] b;
+            cout << "Runtime: " << time_use << "ms" << endl;
+            cout << "Compare: " << compare << endl;
+        }
 	}
-	else if(algorithm == "radix-sort"){
-		RadixSort(a, n, compare);
-        startTime = clock();
-        RadixSort(a, n);
-        endTime = clock();
-        time_use = (double)(endTime - startTime);
+	else if(algorithmName == "radix-sort"){
+		if(outputPara == "-time"){
+            startTime = clock();
+            RadixSort(a, n);
+            endTime = clock();
+            time_use = (double)(endTime - startTime)/CLOCKS_PER_SEC*1000;
+            cout << "Runtime: " << time_use << "ms" << endl;
+        }
+        else if(outputPara == "-comp"){
+            RadixSort(a, n, compare);
+            cout << "Compare: " << compare << endl;
+        }
+        else if(outputPara == "-both"){
+            int* b = new int[n];
+            copy(a, a+n, b);
+            startTime = clock();
+            RadixSort(a, n);
+            endTime = clock();
+            time_use = (double)(endTime - startTime)/CLOCKS_PER_SEC*1000;
+            RadixSort(a, n, compare);
+            delete[] b;
+            cout << "Runtime: " << time_use << "ms" << endl;
+            cout << "Compare: " << compare << endl;
+        }
 	}
-	else if(algorithm == "selection-sort"){
-		SelectionSort(a, n, compare);
-        startTime = clock();
-        SelectionSort(a, n);
-        endTime = clock();
-        time_use = (double)(endTime - startTime);
+	else if(algorithmName == "selection-sort"){
+		if(outputPara == "-time"){
+            startTime = clock();
+            SelectionSort(a, n);
+            endTime = clock();
+            time_use =(double)(endTime - startTime)/CLOCKS_PER_SEC*1000;
+            cout << "Runtime: " << time_use << "ms" << endl;
+        }
+        else if(outputPara == "-comp"){
+            SelectionSort(a, n, compare);
+            cout << "Compare: " << compare << endl;
+        }
+        else if(outputPara == "-both"){
+            int* b = new int[n];
+            copy(a, a+n, b);
+            startTime = clock();
+            SelectionSort(a, n);
+            endTime = clock();
+            time_use = (double)(double)(endTime - startTime)/CLOCKS_PER_SEC*1000;
+            SelectionSort(b, n, compare);
+            delete[] b;
+            cout << "Runtime: " << time << "ms" << endl;
+            cout << "Compare: " << compare << endl;
+        }
 	}
-	else if(algorithm == "shaker-sort"){
-		
+	else if(algorithmName == "shaker-sort"){
+		if(outputPara == "-time"){
+            startTime = clock();
+            ShakerSort(a, n);
+            endTime = clock();
+            time_use = (double)(endTime - startTime)/CLOCKS_PER_SEC*1000;
+            cout << "Runtime: " << time << "ms" << endl;
+        }
+        else if(outputPara == "-comp"){
+            ShakerSort(a, n, compare);
+            cout << "Compare: " << compare << endl;
+        }
+        else if(outputPara == "-both"){
+            int* b = new int[n];
+            copy(a, a+n, b);
+            startTime = clock();
+            ShakerSort(a, n);
+            endTime = clock();
+            time_use = (double)(endTime - startTime)/CLOCKS_PER_SEC*1000;
+            ShakerSort(b, n, compare);
+            delete[] b;
+            cout << "Runtime: " << time << "ms" << endl;
+            cout << "Compare: " << compare << endl;
+        }
 	}
-	else if(algorithm == "shell-sort"){
-		
+	else if(algorithmName == "shell-sort"){
+		if(outputPara == "-time"){
+            startTime = clock();
+            ShellSort(a, n);
+            endTime = clock();
+            time_use = (double)(endTime - startTime)/CLOCKS_PER_SEC*1000;
+            cout << "Runtime: " << time << "ms" << endl;
+        }
+        else if(outputPara == "-comp"){
+            ShellSort(a, n, compare);
+            cout << "Compare: " << compare << endl;
+        }
+        else if(outputPara == "-both"){
+            int* b = new int[n];
+            copy(a, a+n, b);
+            startTime = clock();
+            ShellSort(a, n);
+            endTime = clock();
+            time_use = (double)(double)(endTime - startTime)/CLOCKS_PER_SEC*1000;
+            ShellSort(b, n, compare);
+            delete[] b;
+            cout << "Runtime: " << time << "ms" << endl;
+            cout << "Compare: " << compare << endl;
+        }
 	}
 	else{
 		cout << "Error: unknown algorithm!\n" << endl;
@@ -69,24 +298,10 @@ void cmd1(string algorithmName, string fileName, string outputPara){
     for(int i = 0; i < n; i++){
         readFile >> a[i];
     }
-
-    double time = 0;
+    int time = 0;
     long long compare = 0;
-    //Sort
-    generateAlgorithms(a, n, time, compare, algorithmName);
-    if(outputPara == "-time"){
-        //Output runtime
-        cout << "Runtime: " << time << "ms" << endl;
-    }
-    else if(outputPara == "-comp"){
-        //Output comparisons
-        cout << "Comparisons: " << compare << endl;
-    }
-    else if(outputPara == "-both"){
-        //Output runtime and comparisons
-        cout << "Runtime: " << time << "ms" << endl;
-        cout << "Comparisons: " << compare << endl;
-    }
+    
+    generateAlgorithms(a, n, time, compare, algorithmName, outputPara);
 
     //Write file
     ofstream writeFile("./Files/output.txt");
@@ -119,23 +334,10 @@ void cmd2(string algorithmName, string inputSize, string inputOrder, string outp
     }
     writeInput.close();
     
-    double time = 0;
+    int time = 0;
     long long compare = 0;
     //Sort
-    generateAlgorithms(a, n, time, compare, algorithmName);
-    if(outputPara == "-time"){
-        //Output runtime
-        cout << "Runtime: " << time << "ms" << endl;
-    }
-    else if(outputPara == "-comp"){
-        //Output comparisons
-        cout << "Comparisons: " << compare << endl;
-    }
-    else if(outputPara == "-both"){
-        //Output runtime and comparisons
-        cout << "Runtime: " << time << "ms" << endl;
-        cout << "Comparisons: " << compare << endl;
-    }
+    generateAlgorithms(a, n, time, compare, algorithmName, outputPara);
 
     //Write file
     ofstream writeOuput("./Files/output.txt");
@@ -156,27 +358,100 @@ void cmd3(string algorithmName, string inputSize, string outputPara){
         int *a = new int[n];
         generateDataWithAll(a, n, i);
 
-        double time = 0;
+        int time = 0;
         long long compare = 0;
-        //Sort
-        generateAlgorithms(a, n, time, compare, algorithmName);
-        if(outputPara == "-time"){
-            //Output runtime
-            cout << "Runtime: " << time << "ms" << endl;
-        }
-        else if(outputPara == "-comp"){
-            //Output comparisons
-            cout << "Comparisons: " << compare << endl;
-        }
-        else if(outputPara == "-both"){
-            //Output runtime and comparisons
-            cout << "Runtime: " << time << "ms" << endl;
-            cout << "Comparisons: " << compare << endl;
-        }
+        
+        generateAlgorithms(a, n, time, compare, algorithmName, outputPara);
         cout << "----------------------\n";
     }
 }
 
+void generateAlgorithms(int a[], int n, int& time, long long& compare, string algorithms){
+    int* b = new int[n];
+    copy(a, a+n, b);
+    clock_t startTime, endTime;
+    if(algorithms == "bubble-sort"){
+        startTime = clock();
+        BubbleSort(a, n);
+        endTime = clock();
+        time = (double)(endTime - startTime)/CLOCKS_PER_SEC*1000;
+        BubbleSort(b, n, compare);
+    }
+    else if(algorithms == "insertion-sort"){
+        startTime = clock();
+        InsertionSort(a, n);
+        endTime = clock();
+        time = (double)(endTime - startTime)/CLOCKS_PER_SEC*1000;
+        InsertionSort(b, n, compare);
+    }
+    else if(algorithms == "selection-sort"){
+        startTime = clock();
+        SelectionSort(a, n);
+        endTime = clock();
+        time = (double)(endTime - startTime)/CLOCKS_PER_SEC*1000;
+        SelectionSort(b, n, compare);
+    }
+    else if(algorithms == "shaker-sort"){
+        startTime = clock();
+        ShakerSort(a, n);
+        endTime = clock();
+        time = (double)(endTime - startTime)/CLOCKS_PER_SEC*1000;
+        ShakerSort(b, n, compare);
+    }
+    else if(algorithms == "shell-sort"){
+        startTime = clock();
+        ShellSort(a, n);
+        endTime = clock();
+        time = (double)(endTime - startTime)/CLOCKS_PER_SEC*1000;
+        ShellSort(b, n, compare);
+    }
+    else if(algorithms == "merge-sort"){
+        startTime = clock();
+        MergeSort(a, 0, n-1);
+        endTime = clock();
+        time = (double)(endTime - startTime)/CLOCKS_PER_SEC*1000;
+        MergeSort(b, 0, n-1, compare);
+    }
+    else if(algorithms == "quick-sort"){
+        startTime = clock();
+        QuickSort(a, 0, n-1);
+        endTime = clock();
+        time = (double)(endTime - startTime)/CLOCKS_PER_SEC*1000;
+        QuickSort(b, 0, n-1, compare);
+    }
+    else if(algorithms == "heap-sort"){
+        startTime = clock();
+        HeapSort(a, n);
+        endTime = clock();
+        time = (double)(endTime - startTime)/CLOCKS_PER_SEC*1000;
+        HeapSort(b, n, compare);
+    }
+    else if(algorithms == "radix-sort"){
+        startTime = clock();
+        RadixSort(a, n);
+        endTime = clock();
+        time = (double)(endTime - startTime)/CLOCKS_PER_SEC*1000;
+        RadixSort(b, n, compare);
+    }
+    else if(algorithms == "counting-sort"){
+        startTime = clock();
+        CountingSort(a, n);
+        endTime = clock();
+        time = (double)(endTime - startTime)/CLOCKS_PER_SEC*1000;
+        CountingSort(b, n, compare);
+    }
+    else if(algorithms == "flash-sort"){
+        startTime = clock();
+        FlashSort(a, n);
+        endTime = clock();
+        time = (double)(endTime - startTime)/CLOCKS_PER_SEC*1000;
+        FlashSort(b, n, compare);
+    }
+    else{
+        cout << "Error: unknown algorithm!\n" << endl;
+    }
+    delete[] b;
+}
 void cmd4(string algorithmName1, string algorithmName2, string fileName){
     cout << algorithmName1 << " | " << algorithmName2 << endl;
     ifstream readFile("./Files/"+fileName);
@@ -186,10 +461,8 @@ void cmd4(string algorithmName1, string algorithmName2, string fileName){
     for(int i = 0; i < n; i++){
         readFile >> a[i];
     }
-    double time1 = 0;
-    long long compare1 = 0;
-    double time2 = 0;
-    long long compare2 = 0;
+    int time1 = 0, time2 = 0;   
+    long long compare1 = 0, compare2 = 0;
     generateAlgorithms(a, n, time1, compare1, algorithmName1);
     generateAlgorithms(a, n, time2, compare2, algorithmName2);
     cout << "Running time: " << time1 << "s "<< " | " << time2 << "s " << endl;
@@ -214,10 +487,8 @@ void cmd5(string algorithmName1, string algorithmName2, string inputSize, string
     writeInput.close();
 
     cout << algorithmName1 << " | " << algorithmName2 << endl;
-    double time1 = 0;
-    long long compare1 = 0;
-    double time2 = 0;
-    long long compare2 = 0;
+    int time1 = 0, time2 = 0;
+    long long compare1 = 0, compare2 = 0;
     generateAlgorithms(a, n, time1, compare1, algorithmName1);
     generateAlgorithms(a, n, time2, compare2, algorithmName2);
     cout << "Running time: " << time1 << "s "<< " | " << time2 << "s " << endl;
