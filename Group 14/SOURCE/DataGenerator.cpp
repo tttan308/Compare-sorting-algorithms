@@ -67,8 +67,6 @@ void GenerateData(int a[], int n, int dataType) {
 	}
 }
 
-int dataSize[6] = {10000,30000,50000,100000,300000,500000};
-
 	
 bool checkGivenInput(string s){
 	return s.find(".txt") >=0;

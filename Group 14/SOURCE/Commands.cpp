@@ -24,22 +24,25 @@ void generateAlgorithms(int a[], int n, double& time_use, long long& compare, st
 		cout << "merge-sort" << endl;
 	}
 	else if(algorithm == "quick-sort"){
-        startTime = clock();
 		QuickSort(a, 0, n-1, compare);
+        startTime = clock();
+        QuickSort(a, 0, n-1);
         endTime = clock();
-        time_use = (double)(endTime - startTime) / CLOCKS_PER_SEC;
+        time_use = (double)(endTime - startTime);
 	}
 	else if(algorithm == "radix-sort"){
-        startTime = clock();
 		RadixSort(a, n, compare);
+        startTime = clock();
+        RadixSort(a, n);
         endTime = clock();
-        time_use = (double)(endTime - startTime) / CLOCKS_PER_SEC;
+        time_use = (double)(endTime - startTime);
 	}
 	else if(algorithm == "selection-sort"){
-        startTime = clock();
 		SelectionSort(a, n, compare);
+        startTime = clock();
+        SelectionSort(a, n);
         endTime = clock();
-        time_use = (double)(endTime - startTime) / CLOCKS_PER_SEC;
+        time_use = (double)(endTime - startTime);
 	}
 	else if(algorithm == "shaker-sort"){
 		
@@ -62,7 +65,7 @@ void cmd1(string algorithmName, string fileName, string outputPara){
     }
     int n;
     readFile >> n;
-    int a[n];
+    int *a = new int[n];
     for(int i = 0; i < n; i++){
         readFile >> a[i];
     }
@@ -73,7 +76,7 @@ void cmd1(string algorithmName, string fileName, string outputPara){
     generateAlgorithms(a, n, time, compare, algorithmName);
     if(outputPara == "-time"){
         //Output runtime
-        cout << "Runtime: " << time << "s" << endl;
+        cout << "Runtime: " << time << "ms" << endl;
     }
     else if(outputPara == "-comp"){
         //Output comparisons
@@ -81,7 +84,7 @@ void cmd1(string algorithmName, string fileName, string outputPara){
     }
     else if(outputPara == "-both"){
         //Output runtime and comparisons
-        cout << "Runtime: " << time << "s" << endl;
+        cout << "Runtime: " << time << "ms" << endl;
         cout << "Comparisons: " << compare << endl;
     }
 
@@ -101,7 +104,7 @@ void cmd1(string algorithmName, string fileName, string outputPara){
 
 void cmd2(string algorithmName, string inputSize, string inputOrder, string outputPara){
     int n = stoi(inputSize);
-    int a[n];
+    int *a = new int[n];
     generateDataWithInputOrder(a, n, inputOrder);
 
     //Write Input
@@ -122,7 +125,7 @@ void cmd2(string algorithmName, string inputSize, string inputOrder, string outp
     generateAlgorithms(a, n, time, compare, algorithmName);
     if(outputPara == "-time"){
         //Output runtime
-        cout << "Runtime: " << time << "s" << endl;
+        cout << "Runtime: " << time << "ms" << endl;
     }
     else if(outputPara == "-comp"){
         //Output comparisons
@@ -130,7 +133,7 @@ void cmd2(string algorithmName, string inputSize, string inputOrder, string outp
     }
     else if(outputPara == "-both"){
         //Output runtime and comparisons
-        cout << "Runtime: " << time << "s" << endl;
+        cout << "Runtime: " << time << "ms" << endl;
         cout << "Comparisons: " << compare << endl;
     }
 
@@ -150,7 +153,7 @@ void cmd2(string algorithmName, string inputSize, string inputOrder, string outp
 void cmd3(string algorithmName, string inputSize, string outputPara){
     for(int i = 0; i < 4; i++){
         int n = stoi(inputSize);
-        int a[n];
+        int *a = new int[n];
         generateDataWithAll(a, n, i);
 
         double time = 0;
@@ -159,7 +162,7 @@ void cmd3(string algorithmName, string inputSize, string outputPara){
         generateAlgorithms(a, n, time, compare, algorithmName);
         if(outputPara == "-time"){
             //Output runtime
-            cout << "Runtime: " << time << "s" << endl;
+            cout << "Runtime: " << time << "ms" << endl;
         }
         else if(outputPara == "-comp"){
             //Output comparisons
@@ -167,7 +170,7 @@ void cmd3(string algorithmName, string inputSize, string outputPara){
         }
         else if(outputPara == "-both"){
             //Output runtime and comparisons
-            cout << "Runtime: " << time << "s" << endl;
+            cout << "Runtime: " << time << "ms" << endl;
             cout << "Comparisons: " << compare << endl;
         }
         cout << "----------------------\n";
@@ -179,7 +182,7 @@ void cmd4(string algorithmName1, string algorithmName2, string fileName){
     ifstream readFile("./Files/"+fileName);
     int n;
     readFile >> n;
-    int a[n];
+    int *a = new int[n];
     for(int i = 0; i < n; i++){
         readFile >> a[i];
     }
@@ -195,7 +198,7 @@ void cmd4(string algorithmName1, string algorithmName2, string fileName){
 
 void cmd5(string algorithmName1, string algorithmName2, string inputSize, string inputOrder){
     int n = stoi(inputSize);
-    int a[n];
+    int *a = new int[n];
     generateDataWithInputOrder(a, n, inputOrder);
 
     //Write Input
