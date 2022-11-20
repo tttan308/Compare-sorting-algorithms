@@ -197,8 +197,6 @@ int ShellSort(int arr[], int N)
     return 0;
 }
 
-
-
 //====== HEAP SORT ======//
 
 void heapify(int arr[], int n, int i, long long & compare)
@@ -549,7 +547,7 @@ void RadixSort(int a[], int n){
 void FlashSort(int a[], int n, long long& compare){
     int minVal = a[0];
 	int maxIdx = 0;
-	int m = int(0.43 * n);
+	int m = 0.43 * n;
 	int* l = new int[m];
 	for (int i = 0;++compare && i < m; i++) {
         l[i] = 0;
@@ -557,20 +555,19 @@ void FlashSort(int a[], int n, long long& compare){
 		
 	for (int i = 1;++compare && i < n; i++)
 	{
-		if (++compare &&a[i] < minVal) {
+		if (++compare && a[i] < minVal) {
             minVal = a[i];
         }
-		if (++compare &&a[i] > a[maxIdx]) {
+		if (++compare && a[i] > a[maxIdx]) {
             maxIdx = i;
         }
-			
 	}
     
-	if (++compare &&a[maxIdx] == minVal) {
+	if (++compare && a[maxIdx] == minVal) {
         return;
     }
 
-	double c1 = 1.00 * (m - 1) / (a[maxIdx] - minVal);
+	double c1 = (double) (m - 1) / (a[maxIdx] - minVal);
 
 	for (int i = 0;++compare && i < n; i++)
 	{
@@ -582,36 +579,23 @@ void FlashSort(int a[], int n, long long& compare){
         l[i] += l[i - 1];
     }
 		
-	HoanVi(a[maxIdx], a[0]);
+	swap(a[maxIdx], a[0]);
 
 	int nmove = 0;
 	int j = 0;
 	int k = m - 1;
-	int t = 0;
-	int flash;
-
-	while (++compare &&nmove < n - 1)
+	int flash = a[0];   
+	while (++compare && nmove < n - 1)
 	{
-		while (++compare &&j > l[k] - 1)
+		while (++compare && j > l[k] - 1)
 		{
 			j++;
 			k = int(c1*(a[j] - minVal));
 		}
-
-		flash = a[j];
-
-		if (++compare &&k < 0) {
-            break;
-        }
-
-		while (++compare &&j != l[k])
+		while (++compare && j != l[k])
 		{
 			k = int(c1*(flash - minVal));
-			int hold = a[t = --l[k]];
-
-			a[t] = flash;
-			flash = hold;
-
+			swap(flash, a[--l[k]]);
 			++nmove;
 		}
 	}
@@ -622,7 +606,7 @@ void FlashSort(int a[], int n, long long& compare){
 void FlashSort(int a[], int n){
     int minVal = a[0];
 	int maxIdx = 0;
-	int m = int(0.43 * n);
+	int m = 0.43 * n;
 	int* l = new int[m];
 	for (int i = 0; i < m; i++) {
         l[i] = 0;
@@ -636,14 +620,13 @@ void FlashSort(int a[], int n){
 		if (a[i] > a[maxIdx]) {
             maxIdx = i;
         }
-			
 	}
     
 	if (a[maxIdx] == minVal) {
         return;
     }
 
-	double c1 = 1.00 * (m - 1) / (a[maxIdx] - minVal);
+	double c1 = (double) (m - 1) / (a[maxIdx] - minVal);
 
 	for (int i = 0; i < n; i++)
 	{
@@ -655,14 +638,12 @@ void FlashSort(int a[], int n){
         l[i] += l[i - 1];
     }
 		
-	HoanVi(a[maxIdx], a[0]);
+	swap(a[maxIdx], a[0]);
 
 	int nmove = 0;
 	int j = 0;
 	int k = m - 1;
-	int t = 0;
-	int flash;
-
+	int flash = a[0];   
 	while (nmove < n - 1)
 	{
 		while (j > l[k] - 1)
@@ -670,21 +651,10 @@ void FlashSort(int a[], int n){
 			j++;
 			k = int(c1*(a[j] - minVal));
 		}
-
-		flash = a[j];
-
-		if (k < 0) {
-            break;
-        }
-
 		while (j != l[k])
 		{
 			k = int(c1*(flash - minVal));
-			int hold = a[t = --l[k]];
-
-			a[t] = flash;
-			flash = hold;
-
+			swap(flash, a[--l[k]]);
 			++nmove;
 		}
 	}
