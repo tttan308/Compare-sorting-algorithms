@@ -72,7 +72,7 @@ void generateAlgorithms(int a[], int n, int& time_use, long long& compare, strin
             startTime = clock();
             FlashSort(a, n);
             endTime = clock();
-            time_use = (double)(double)(endTime - startTime)/CLOCKS_PER_SEC*1000;
+            time_use = (double)(endTime - startTime)/CLOCKS_PER_SEC*1000;
             FlashSort(b, n, compare);
             delete[] b;
             cout << "Runtime: " << time_use << "ms" << endl;
@@ -222,10 +222,10 @@ void generateAlgorithms(int a[], int n, int& time_use, long long& compare, strin
             startTime = clock();
             SelectionSort(a, n);
             endTime = clock();
-            time_use = (double)(double)(endTime - startTime)/CLOCKS_PER_SEC*1000;
+            time_use = (double)(endTime - startTime)/CLOCKS_PER_SEC*1000;
             SelectionSort(b, n, compare);
             delete[] b;
-            cout << "Runtime: " << time << "ms" << endl;
+            cout << "Runtime: " << time_use << "ms" << endl;
             cout << "Compare: " << compare << endl;
         }
 	}
@@ -465,7 +465,7 @@ void cmd4(string algorithmName1, string algorithmName2, string fileName){
     long long compare1 = 0, compare2 = 0;
     generateAlgorithms(a, n, time1, compare1, algorithmName1);
     generateAlgorithms(a, n, time2, compare2, algorithmName2);
-    cout << "Running time: " << time1 << "s "<< " | " << time2 << "s " << endl;
+    cout << "Running time: " << time1 << "ms "<< " | " << time2 << "ms " << endl;
     cout << "Comparisons: " << compare1 << " | " << compare2 << endl;
 }
 
@@ -491,6 +491,6 @@ void cmd5(string algorithmName1, string algorithmName2, string inputSize, string
     long long compare1 = 0, compare2 = 0;
     generateAlgorithms(a, n, time1, compare1, algorithmName1);
     generateAlgorithms(a, n, time2, compare2, algorithmName2);
-    cout << "Running time: " << time1 << "s "<< " | " << time2 << "s " << endl;
+    cout << "Running time: " << time1 << "ms "<< " | " << time2 << "ms " << endl;
     cout << "Comparisons: " << compare1 << " | " << compare2 << endl;
 }

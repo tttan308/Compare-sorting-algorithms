@@ -70,7 +70,7 @@ void GenerateData(int a[], int n, int dataType) {
 
 	
 bool checkGivenInput(string s){
-	return s.find(".txt") > 0;
+	return s.find(".txt") != -1;
 }
 
 void generateDataWithInputOrder(int a[], int n, string nameData){
