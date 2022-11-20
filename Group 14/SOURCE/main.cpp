@@ -29,7 +29,7 @@ int main(int argc, char** argv) {
         }
     }
     else{
-        cout << "abcxyz";
+        cout << "Invalid command line arguments!"  << endl; exit(0);
     }
     return 0;
 }
