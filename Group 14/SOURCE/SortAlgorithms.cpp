@@ -687,7 +687,6 @@ void FlashSort(int a[], int n){
 	for (int i = 0; i < m; i++) {
         l[i] = 0;
     }
-		
 	for (int i = 1; i < n; i++)
 	{
 		if (a[i] < minVal) {

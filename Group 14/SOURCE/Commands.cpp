@@ -163,7 +163,7 @@ void generateAlgorithms(int a[], int n, int& time_use, long long& compare, strin
             MergeSort(a, 0, n - 1);
             endTime = clock();
             time_use = (double)(endTime - startTime)/CLOCKS_PER_SEC*1000;
-            MergeSort(a, 0, n-1, compare);
+            MergeSort(b, 0, n-1, compare);
             delete[] b;
             cout << "Runtime: " << time_use << "ms" << endl;
             cout << "Compare: " << compare << endl;
@@ -191,7 +191,7 @@ void generateAlgorithms(int a[], int n, int& time_use, long long& compare, strin
             QuickSort(a, 0, n - 1);
             endTime = clock();
             time_use = (double)(endTime - startTime)/CLOCKS_PER_SEC*1000;
-            QuickSort(a, 0, n-1, compare);
+            QuickSort(b, 0, n-1, compare);
             delete[] b;
             cout << "Runtime: " << time_use << "ms" << endl;
             cout << "Compare: " << compare << endl;
@@ -219,7 +219,7 @@ void generateAlgorithms(int a[], int n, int& time_use, long long& compare, strin
             RadixSort(a, n);
             endTime = clock();
             time_use = (double)(endTime - startTime)/CLOCKS_PER_SEC*1000;
-            RadixSort(a, n, compare);
+            RadixSort(b, n, compare);
             delete[] b;
             cout << "Runtime: " << time_use << "ms" << endl;
             cout << "Compare: " << compare << endl;
@@ -281,7 +281,8 @@ void generateAlgorithms(int a[], int n, int& time_use, long long& compare, strin
             cout << "Compare: " << compare << endl;
         }
         else {
-            cout << "Invalid command line arguments!"  << endl; exit(0);
+            cout << "Invalid command line arguments!"  << endl;
+            exit(0);
         }
 	}
 	else if(algorithmName == "shell-sort"){
@@ -302,7 +303,7 @@ void generateAlgorithms(int a[], int n, int& time_use, long long& compare, strin
             startTime = clock();
             ShellSort(a, n);
             endTime = clock();
-            time_use = (double)(double)(endTime - startTime)/CLOCKS_PER_SEC*1000;
+            time_use = (double)(endTime - startTime)/CLOCKS_PER_SEC*1000;
             ShellSort(b, n, compare);
             delete[] b;
             cout << "Runtime: " << time << "ms" << endl;
@@ -348,6 +349,8 @@ void cmd1(string algorithmName, string fileName, string outputPara){
     }
     readFile.close();
     writeFile.close();
+
+    delete[] a;
 }
 
 void cmd2(string algorithmName, string inputSize, string inputOrder, string outputPara){
@@ -383,6 +386,7 @@ void cmd2(string algorithmName, string inputSize, string inputOrder, string outp
         writeOuput << a[i] << " ";
     }
     writeOuput.close();
+    delete[] a;
 }
 
 void cmd3(string algorithmName, string inputSize, string outputPara){
@@ -396,6 +400,7 @@ void cmd3(string algorithmName, string inputSize, string outputPara){
         
         generateAlgorithms(a, n, time, compare, algorithmName, outputPara);
         cout << "----------------------\n";
+        delete[] a;
     }
 }
 
@@ -494,18 +499,24 @@ void cmd4(string algorithmName1, string algorithmName2, string fileName){
     for(int i = 0; i < n; i++){
         readFile >> a[i];
     }
+    int *b = new int[n];
+    copy(a,a+n,b);
     int time1 = 0, time2 = 0;   
     long long compare1 = 0, compare2 = 0;
     generateAlgorithms(a, n, time1, compare1, algorithmName1);
     generateAlgorithms(a, n, time2, compare2, algorithmName2);
     cout << "Running time: " << time1 << "ms "<< " | " << time2 << "ms " << endl;
     cout << "Comparisons: " << compare1 << " | " << compare2 << endl;
+    delete[] b;
+    delete[] a;
 }
 
 void cmd5(string algorithmName1, string algorithmName2, string inputSize, string inputOrder){
     int n = stoi(inputSize);
     int *a = new int[n];
+    int *b = new int[n];
     generateDataWithInputOrder(a, n, inputOrder);
+    copy(a,a+n,b);
 
     //Write Input
     ofstream writeInput("./Files/input.txt");
@@ -523,7 +534,9 @@ void cmd5(string algorithmName1, string algorithmName2, string inputSize, string
     int time1 = 0, time2 = 0;
     long long compare1 = 0, compare2 = 0;
     generateAlgorithms(a, n, time1, compare1, algorithmName1);
-    generateAlgorithms(a, n, time2, compare2, algorithmName2);
+    generateAlgorithms(b, n, time2, compare2, algorithmName2);
     cout << "Running time: " << time1 << "ms "<< " | " << time2 << "ms " << endl;
     cout << "Comparisons: " << compare1 << " | " << compare2 << endl;
+    delete[] b;
+    delete[] a;
 }
