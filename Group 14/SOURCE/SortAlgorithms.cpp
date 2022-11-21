@@ -413,7 +413,6 @@ void QuickSort(int a[], int l, int r, long long& compare){
     }
 }
 
-//Ham binh thuong dung de do thoi gian
 int partition(int a[], int l, int r){
     int pivot = a[(l+r)/2];
     int i = l;
@@ -444,6 +443,36 @@ void QuickSort(int a[], int l, int r){
     }
 }
 
+int LomutoPartition(int a[], int l, int r){
+    int pivot = a[r];
+    int i = l - 1;
+    for(int j = l; j < r; j++){
+        if(a[j] < pivot){
+            i++;
+            HoanVi(a[i], a[j]);
+        }
+    }
+    HoanVi(a[i + 1], a[r]);
+    return i + 1;
+}
+
+int Hoare(int a[], int l, int r){
+    int pivot = a[l];
+    int i = l - 1;
+    int j = r + 1;
+    while(true){
+        do{
+            i++;
+        }while(a[i] < pivot);
+        do{
+            j--;
+        }while(a[j] > pivot);
+        if(i >= j){
+            return j;
+        }
+        HoanVi(a[i], a[j]);
+    }
+}
 
 //====== COUNTING SORT ======//
 
@@ -542,6 +571,53 @@ void RadixSort(int a[], int n){
         exp*= 10;
     }
 }
+
+void RadixSortWithoutVector(int a[], int n){
+    int max = a[0];
+    for(int i = 1; i < n; i++){
+        if(a[i] > max){
+            max = a[i];
+        }
+    }
+    int exp = 1;
+    while(max / exp > 0){
+        int count[10] = {0};
+        for(int i = 0; i < n; i++){
+            count[(a[i] / exp) % 10]++;
+        }
+        for(int i = 1; i < 10; i++){
+            count[i] += count[i - 1];
+        }
+        int *output = new int[n];
+        for(int i = n - 1; i >= 0; i--){
+            output[count[(a[i] / exp) % 10] - 1] = a[i];
+            count[(a[i] / exp) % 10]--;
+        }
+        for(int i = 0; i < n; i++){
+            a[i] = output[i];
+        }
+        exp*= 10;
+    }
+}
+
+void RadixSortForString(string a[], int n){
+    int max = a[0].length();
+    int exp = max - 1;
+    while(exp >= 0){
+        vector<string> buckets[10];
+        for(int i = 0; i < n; i++){
+            buckets[a[i][exp] - '0'].push_back(a[i]);
+        }
+        int index = 0;
+        for(int i = 0; i < 10; i++){
+            for(int j = 0; j < buckets[i].size(); j++){
+                a[index] = buckets[i][j];
+                index++;
+            }
+        }
+        exp--;
+    }
+}
 //====== FLASH SORT ======//
 
 void FlashSort(int a[], int n, long long& compare){
@@ -581,11 +657,11 @@ void FlashSort(int a[], int n, long long& compare){
 		
 	swap(a[maxIdx], a[0]);
 
-	int nmove = 0;
+	int move = 0;
 	int j = 0;
 	int k = m - 1;
 	int flash = a[0];   
-	while (++compare && nmove < n - 1)
+	while (++compare && move < n - 1)
 	{
 		while (++compare && j > l[k] - 1)
 		{
@@ -596,7 +672,7 @@ void FlashSort(int a[], int n, long long& compare){
 		{
 			k = int(c1*(flash - minVal));
 			swap(flash, a[--l[k]]);
-			++nmove;
+			++move;
 		}
 	}
 	delete[] l;
@@ -640,11 +716,11 @@ void FlashSort(int a[], int n){
 		
 	swap(a[maxIdx], a[0]);
 
-	int nmove = 0;
+	int move = 0;
 	int j = 0;
 	int k = m - 1;
 	int flash = a[0];   
-	while (nmove < n - 1)
+	while (move < n - 1)
 	{
 		while (j > l[k] - 1)
 		{
@@ -655,10 +731,12 @@ void FlashSort(int a[], int n){
 		{
 			k = int(c1*(flash - minVal));
 			swap(flash, a[--l[k]]);
-			++nmove;
+			++move;
 		}
 	}
 	delete[] l;
 	InsertionSort(a, n);
 }
+
+        
 
