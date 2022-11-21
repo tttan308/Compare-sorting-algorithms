@@ -28,6 +28,9 @@ void generateAlgorithms(int a[], int n, int& time_use, long long& compare, strin
             cout << "Runtime: " << time_use << "ms" << endl;
             cout << "Compare: " << compare << endl;
         }
+        else {
+            cout << "Invalid command line arguments!"  << endl; exit(0);
+        }
 	}
 	else if(algorithmName == "counting-sort"){
         if(outputPara == "-time"){
@@ -52,6 +55,9 @@ void generateAlgorithms(int a[], int n, int& time_use, long long& compare, strin
             delete[] b;
             cout << "Runtime: " << time_use << "ms" << endl;
             cout << "Compare: " << compare << endl;
+        }
+        else {
+            cout << "Invalid command line arguments!"  << endl; exit(0);
         }
 	}
 	else if(algorithmName == "flash-sort"){
@@ -78,6 +84,9 @@ void generateAlgorithms(int a[], int n, int& time_use, long long& compare, strin
             cout << "Runtime: " << time_use << "ms" << endl;
             cout << "Compare: " << compare << endl;
         }
+        else {
+            cout << "Invalid command line arguments!"  << endl; exit(0);
+        }
 	}
 	else if(algorithmName == "heap-sort"){
         if(outputPara == "-time"){
@@ -102,6 +111,9 @@ void generateAlgorithms(int a[], int n, int& time_use, long long& compare, strin
             delete[] b;
             cout << "Runtime: " << time_use << "ms" << endl;
             cout << "Compare: " << compare << endl;
+        }
+        else {
+            cout << "Invalid command line arguments!"  << endl; exit(0);
         }
 	}
 	else if(algorithmName == "insertion-sort"){
@@ -128,6 +140,9 @@ void generateAlgorithms(int a[], int n, int& time_use, long long& compare, strin
             cout << "Runtime: " << time_use << "ms" << endl;
             cout << "Compare: " << compare << endl;
         }
+        else {
+            cout << "Invalid command line arguments!"  << endl; exit(0);
+        }
 	}
 	else if(algorithmName == "merge-sort"){
 		if(outputPara == "-time"){
@@ -152,6 +167,9 @@ void generateAlgorithms(int a[], int n, int& time_use, long long& compare, strin
             delete[] b;
             cout << "Runtime: " << time_use << "ms" << endl;
             cout << "Compare: " << compare << endl;
+        }
+        else {
+            cout << "Invalid command line arguments!"  << endl; exit(0);
         }
 	}
 	else if(algorithmName == "quick-sort"){
@@ -178,6 +196,9 @@ void generateAlgorithms(int a[], int n, int& time_use, long long& compare, strin
             cout << "Runtime: " << time_use << "ms" << endl;
             cout << "Compare: " << compare << endl;
         }
+        else {
+            cout << "Invalid command line arguments!"  << endl; exit(0);
+        }
 	}
 	else if(algorithmName == "radix-sort"){
 		if(outputPara == "-time"){
@@ -202,6 +223,9 @@ void generateAlgorithms(int a[], int n, int& time_use, long long& compare, strin
             delete[] b;
             cout << "Runtime: " << time_use << "ms" << endl;
             cout << "Compare: " << compare << endl;
+        }
+        else {
+            cout << "Invalid command line arguments!"  << endl; exit(0);
         }
 	}
 	else if(algorithmName == "selection-sort"){
@@ -228,6 +252,9 @@ void generateAlgorithms(int a[], int n, int& time_use, long long& compare, strin
             cout << "Runtime: " << time_use << "ms" << endl;
             cout << "Compare: " << compare << endl;
         }
+        else {
+            cout << "Invalid command line arguments!"  << endl; exit(0);
+        }
 	}
 	else if(algorithmName == "shaker-sort"){
 		if(outputPara == "-time"){
@@ -252,6 +279,9 @@ void generateAlgorithms(int a[], int n, int& time_use, long long& compare, strin
             delete[] b;
             cout << "Runtime: " << time << "ms" << endl;
             cout << "Compare: " << compare << endl;
+        }
+        else {
+            cout << "Invalid command line arguments!"  << endl; exit(0);
         }
 	}
 	else if(algorithmName == "shell-sort"){
@@ -278,10 +308,13 @@ void generateAlgorithms(int a[], int n, int& time_use, long long& compare, strin
             cout << "Runtime: " << time << "ms" << endl;
             cout << "Compare: " << compare << endl;
         }
+        else {
+            cout << "Invalid command line arguments!"  << endl; exit(0);
+        }
 	}
-	else{
-		cout << "Error: unknown algorithm!\n" << endl;
-	}
+    else{
+        cout << "Invalid command line arguments!"  << endl; exit(0);
+    }
 }
 
 
@@ -447,8 +480,8 @@ void generateAlgorithms(int a[], int n, int& time, long long& compare, string al
         time = (double)(endTime - startTime)/CLOCKS_PER_SEC*1000;
         FlashSort(b, n, compare);
     }
-    else{
-        cout << "Error: unknown algorithm!\n" << endl;
+    else {
+        cout << "Invalid command line arguments!"; exit(0);
     }
     delete[] b;
 }
