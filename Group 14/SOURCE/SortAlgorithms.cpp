@@ -671,15 +671,10 @@ void FlashSort(int a[], int n, long long& compare){
 		while (++compare && j != l[k])
 		{
 			k = int(c1*(flash - minVal));
-<<<<<<< HEAD
 			swap(flash, a[--l[k]]);
 			++move;
-=======
-			HoanVi(flash, a[--l[k]]);
-			++nmove;
->>>>>>> cb2b16230fa6bc0fce529fc9e455ee74b1fc9eed
-		}
-	}
+        }
+    }
 	delete[] l;
 	InsertionSort(a, n, compare);
 }
@@ -735,13 +730,8 @@ void FlashSort(int a[], int n){
 		while (j != l[k])
 		{
 			k = int(c1*(flash - minVal));
-<<<<<<< HEAD
 			swap(flash, a[--l[k]]);
 			++move;
-=======
-			HoanVi(flash, a[--l[k]]);
-			++nmove;
->>>>>>> cb2b16230fa6bc0fce529fc9e455ee74b1fc9eed
 		}
 	}
 	delete[] l;
